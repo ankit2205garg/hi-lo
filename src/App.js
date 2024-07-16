@@ -6,7 +6,7 @@ import { secureRandomNumber, zeroPad } from './utils';
 
 
 const App = () => {
-  const [currentNumber, setCurrentNumber] = useState(new Array(5).fill(null));
+  const [currentNumber, setCurrentNumber] = useState(new Array(defaultVal.noOfDiceBlocks).fill(null));
   const [currentBalanceRe,setCurrentBalance] = useState(defaultVal.currentBalance);
   const [betAmount, setBetAmount] = useState(0);
   const [rolling, setRolling] = useState(false);
@@ -18,7 +18,7 @@ const App = () => {
     if(betAmount && !error){
       setRolling(true);
        setTimeout(() => {
-        const number = secureRandomNumber(0,10000);
+        const number = secureRandomNumber(defaultVal.minNumberRange,defaultVal.maxNumberRange);
         const out1 = zeroPad(number);
   
         setCurrentNumber(out1);
